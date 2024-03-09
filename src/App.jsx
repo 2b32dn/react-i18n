@@ -2,7 +2,7 @@ import { useState, useContext } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { FormattedMessage, FormattedDate } from 'react-intl'
+import { FormattedMessage, FormattedDate, FormattedNumber } from 'react-intl'
 import { Context } from './assets/Wrapper'
 
 function App(props) {
@@ -28,9 +28,6 @@ function App(props) {
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
       <select value={context.locale} onChange={context.selectLanguage}>
         <option value='en'>English</option>
         <option value='fr'>French</option>
@@ -54,6 +51,19 @@ function App(props) {
           month='long'
           day='numeric'
           weekday='long'
+        />
+      </p>
+      <p>
+        <FormattedNumber
+          value={20.42}
+          style="currency"
+          currencyDisplay="symbol"
+          currency="USD"
+        />
+      </p>
+      <p>
+        <FormattedNumber
+          value={10000}
         />
       </p>
     </>
