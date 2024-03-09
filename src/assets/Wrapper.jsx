@@ -21,24 +21,30 @@ const Wrapper = ({ children }) => {
       break;
   }
 
-  const [language, setLanguage] = useState(browserDefaultLanguage);
+  const [locale, setLocale] = useState(browserDefaultLanguage);
   const [messages, setMessages] = useState(languageDetected);
 
 
   function selectLanguage(e) {
-    const langSelected = e.target.value;
-    setLanguage(langSelected);
-    if (langSelected === "en" || langSelected === "en-CA") {
-      setMessages(English);
-    } else {
-      setMessages(French);
+    const localeSelected = e.target.value;
+    setLocale(localeSelected);
+    switch (localeSelected) {
+      case "en":
+        setMessages(English);
+        break;
+      case "fr":
+        setMessages(French);
+        break;
+      default:
+        setMessages(English);
+        break;
     }
   }
   const date = children.props.date;
 
   return (
-    <Context.Provider value={{ language, selectLanguage }}>
-      <IntlProvider messages={messages} language={language} date={date}>
+    <Context.Provider value={{ locale, selectLanguage }}>
+      <IntlProvider messages={messages} locale={locale} date={date}>
         {children}
       </IntlProvider>
     </Context.Provider >

@@ -5,7 +5,7 @@ import './App.css'
 import { FormattedMessage, FormattedDate } from 'react-intl'
 import { Context } from './assets/Wrapper'
 
-function App() {
+function App(props) {
   const context = useContext(Context);
   const [count, setCount] = useState(0)
 
@@ -49,7 +49,7 @@ function App() {
       </p>
       <p>
         <FormattedDate
-          value={context.date}
+          value={props.date}
           year='numeric'
           month='long'
           day='numeric'
